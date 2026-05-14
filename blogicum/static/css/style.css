@@ -1,0 +1,58 @@
+/* Подключаем шрифт Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+/* --- Общий текст --- */
+body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #1a1a1a;
+}
+
+/* --- Наследуем шрифт для элементов внутри body --- */
+body * {
+    font-family: inherit;
+}
+
+/* --- Заголовки --- */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 0.5em;
+}
+
+/* --- Параграфы --- */
+p, li {
+    font-weight: 400;
+    font-size: 1rem;
+    color: #333333;
+}
+
+/* --- Ссылки в навигации --- */
+.navbar .nav-link {
+    text-decoration: none;
+    color: #1d4ed8;       /* обычный цвет текста */
+    padding: 5px 12px;    /* внутренние отступы для кнопки */
+    border-radius: 6px;   /* скругление углов кнопки */
+    transition: all 0.3s ease; /* плавный переход при hover */
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: #ffffff;             /* текст становится белым */
+    background-color: #5279e6;  /* фон подсветки (синий, можно поменять) */
+    text-decoration: none;
+    border: none;
+}
+
+/* --- Кнопки (Bootstrap btn) --- */
+.btn {
+    font-family: inherit;
+    font-weight: 500;
+}
+
+/* --- Контейнеры и статьи --- */
+.posts-list article p {
+    margin-bottom: 1rem;
+}
