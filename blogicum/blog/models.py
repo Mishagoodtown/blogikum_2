@@ -53,7 +53,7 @@ class Location(PublishedModel):
         'Название места',
         max_length=MAX_LENGTH
     )
-    
+
     class Meta:
         verbose_name = 'местоположение'
         verbose_name_plural = 'Местоположения'
