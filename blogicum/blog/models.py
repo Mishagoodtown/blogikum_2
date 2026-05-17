@@ -1,9 +1,8 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from .constants import MAX_LENGTH
 
 User = get_user_model()
-
-MAX_LENGTH = 256
 
 
 class PublishedModel(models.Model):

@@ -1,13 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
+from .constants import POST_LIMIT
 
 from .models import Category, Post
 
-POST_LIMIT = 5
 
-
-def get_posts():
-    return Post.objects.select_related(
+def get_published_posts(posts):
+    return posts.select_related(
         'author',
         'location',
         'category',
@@ -19,7 +18,9 @@ def get_posts():
 
 
 def index(request):
-    post_list = get_posts()[:POST_LIMIT]
+    post_list = get_published_posts(
+        Post.objects.all()
+    )[:POST_LIMIT]
 
     return render(request, 'blog/index.html', {
         'post_list': post_list
@@ -28,7 +29,7 @@ def index(request):
 
 def post_detail(request, post_id):
     post = get_object_or_404(
-        get_posts(),
+        get_published_posts(Post.objects.all()),
         pk=post_id,
     )
 
@@ -44,10 +45,7 @@ def category_posts(request, category_slug):
         is_published=True
     )
 
-    post_list = category.posts.filter(
-        pub_date__lte=timezone.now(),
-        is_published=True,
-    )
+    post_list = get_published_posts(category.posts.all())
 
     return render(request, 'blog/category.html', {
         'category': category,
